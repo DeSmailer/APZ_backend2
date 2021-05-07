@@ -87,6 +87,7 @@ namespace PresentationLayer.Controllers
         {
             string institutionId = AuthenticationService.GetInstitutionId(tokenContainer.Token).ToString();
             string userId = AuthenticationService.GetUserId(tokenContainer.Token).ToString();
+
             return chatService.CreateChatCode(userId,institutionId);
         }
         [HttpPost]
