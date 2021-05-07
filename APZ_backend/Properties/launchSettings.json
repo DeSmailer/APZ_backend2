@@ -15,8 +15,7 @@
       "launchUrl": "api/Values/Test",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "ancmHostingModel": "OutOfProcess"
+      }
     },
     "APZ_backend": {
       "commandName": "Project",
