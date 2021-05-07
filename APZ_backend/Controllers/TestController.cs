@@ -29,12 +29,12 @@ namespace PresentationLayer.Controllers
         public async Task<TestString> Test()
         {
             TestString ts = new TestString();
-
+            ts.MyTestString = "it working";
             return ts;
         }
         public class TestString
         {
-            public string myTestString = "it working";
+            public string MyTestString { get; set; }
         }
     }
 }
