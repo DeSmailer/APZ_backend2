@@ -26,9 +26,15 @@ namespace PresentationLayer.Controllers
         }
 
         [HttpGet]
-        public async Task<string> Test()
+        public async Task<TestString> Test()
         {
-            return "it working";
+            TestString ts = new TestString();
+
+            return ts;
+        }
+        public class TestString
+        {
+            public string myTestString = "it working";
         }
     }
 }
