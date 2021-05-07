@@ -35,7 +35,7 @@ namespace APZ_backend
 
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             InstallBussinessLogic(services);
             this.InstallDataAccess(services);
             InstallServices(services);
@@ -88,23 +88,6 @@ namespace APZ_backend
         }
         private void InstallDataAccess(IServiceCollection services)
         {
-            string connection;
-            if (!this.Env.IsDevelopment())
-            {
-                Console.WriteLine("Database in prod mode");
-                connection = this.Configuration.GetConnectionString("DefaultConnectionProd");
-            }
-            else
-            {
-                Console.WriteLine("Database in dev mode");
-                connection = this.Configuration.GetConnectionString("DefaultConnection");
-            }
-
-            services.AddDbContext<AppDbContext>(options =>
-            {
-                options.UseSqlServer(connection);
-            });
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.BuildServiceProvider().GetService<AppDbContext>().Database.Migrate();
         }
