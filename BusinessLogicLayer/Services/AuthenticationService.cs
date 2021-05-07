@@ -82,7 +82,7 @@ namespace BusinessLogicLayer.Services
         public static UserInfo GetUserInfo(string userId, string userRole, string institutionId)
         {
             UserInfo result = new UserInfo { Role = userRole, InstitutionId = institutionId };
-            result.Token = EncryptString(userId + userRole + institutionId);
+            result.Token = EncryptString(userId +"|"+ userRole + "|" + institutionId);
             return result;
         }
 

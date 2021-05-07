@@ -5,9 +5,13 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresentationLayer", "APZ_backend\PresentationLayer.csproj", "{BC344BD0-41C7-4FAA-81FF-A338384EDBE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{F0EB8950-A5D3-41A2-8D7A-E7CA3CD84270}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{F0EB8950-A5D3-41A2-8D7A-E7CA3CD84270}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{48C0D529-0CF4-4FE0-8E01-788E6B4D7866}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{48C0D529-0CF4-4FE0-8E01-788E6B4D7866}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogicLayer.Test", "BusinessLogicLayer.Test\BusinessLogicLayer.Test.csproj", "{E7BFCEED-7A29-4B4D-97B2-1B1565777036}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureLab4", "AzureLab4\AzureLab4.csproj", "{37311F9F-7884-47B7-A9E5-CC1137EC4D40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{48C0D529-0CF4-4FE0-8E01-788E6B4D7866}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48C0D529-0CF4-4FE0-8E01-788E6B4D7866}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48C0D529-0CF4-4FE0-8E01-788E6B4D7866}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7BFCEED-7A29-4B4D-97B2-1B1565777036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7BFCEED-7A29-4B4D-97B2-1B1565777036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7BFCEED-7A29-4B4D-97B2-1B1565777036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7BFCEED-7A29-4B4D-97B2-1B1565777036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37311F9F-7884-47B7-A9E5-CC1137EC4D40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37311F9F-7884-47B7-A9E5-CC1137EC4D40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37311F9F-7884-47B7-A9E5-CC1137EC4D40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37311F9F-7884-47B7-A9E5-CC1137EC4D40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
