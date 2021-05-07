@@ -24,5 +24,11 @@ namespace PresentationLayer.Controllers
         {
             return Task.FromResult(AuthenticationService.DecryptString(str.Str));
         }
+
+        [HttpGet]
+        public async Task<string> Test()
+        {
+            return "it working";
+        }
     }
 }
