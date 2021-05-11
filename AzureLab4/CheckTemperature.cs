@@ -18,15 +18,15 @@ namespace AzureLab4
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
-            int data = int.MinValue;
+            int temperature = int.MinValue;
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic dataBody = JsonConvert.DeserializeObject(requestBody);
-            data = dataBody?.data;
+            temperature = dataBody?.temperature;
 
-            if (data != int.MinValue)
+            if (temperature != int.MinValue)
             {
-                return new OkObjectResult(GetTemperature(data));
+                return new OkObjectResult(GetTemperature(temperature));
             }
             else
             {
@@ -34,35 +34,35 @@ namespace AzureLab4
             }
         }
 
-        private static string GetTemperature(int data)
+        private static string GetTemperature(int temperature)
         {
-            if (data <= -15)
+            if (temperature <= -15)
             {
                 return "+95⸰С";
             }
-            else if (data <= -10)
+            else if (temperature <= -10)
             {
                 return "+83⸰С";
             }
-            else if (data <= -5)
+            else if (temperature <= -5)
             {
                 return "+70⸰С";
             }
-            else if (data <= 0)
+            else if (temperature <= 0)
             {
                 return "+57⸰С";
             }
-            else if (data <= 5)
+            else if (temperature <= 5)
             {
                 return "+44⸰С";
             }
-            else if (data <= 10)
+            else if (temperature <= 10)
             {
                 return "+30⸰С";
             }
             else
             {
-                return "+" + data.ToString() + "⸰С";
+                return "+" + temperature.ToString() + "⸰С";
             }
         }
     }
