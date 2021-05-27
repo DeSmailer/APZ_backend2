@@ -17,6 +17,7 @@ namespace BusinessLogicLayer.Interfaces
         public Task<bool> Post(Message message);
         public Task<IEnumerable<Message>> GetAllMessages(int chatId);
         public ChatCodeContainer CreateChatCode(string userId, string institutionId);
+        public ChatCodeContainer GetChatToken(ChatInfo сhatInfo);
         public Task<IEnumerable<ChatWithLastDate>> UserChats(UserInfo userInfo);
     }
 }

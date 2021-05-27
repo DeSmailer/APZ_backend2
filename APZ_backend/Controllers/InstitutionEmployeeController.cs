@@ -67,11 +67,10 @@ namespace PresentationLayer.Controllers
             return await institutionEmployeeService.Reinstate(institutionEmployee);
         }
 
-        [HttpGet]
-        public async Task<IEnumerable<UserJobs>> GetUserJobs()
+        [HttpPost]
+        public async Task<IEnumerable<UserJobs>> GetUserJobs([FromBody] TokenContainer tokenContainer)
         {
-            string token = this.TokenFromHeader(Request);
-            int id = AuthenticationService.GetUserId(token);
+            int id = AuthenticationService.GetUserId(tokenContainer.Token);
             return await institutionEmployeeService.GetUserJobs(new User { Id = id });
         }
 

@@ -11,7 +11,7 @@ namespace BusinessLogicLayer.Services
 {
     public static class AuthenticationService
     {
-        private static string key = "t9o3py48n8r05999j5ee9148eofhuyr9";
+        private static string key = "t9o3py48n8r05999j5ee9148eofhuyr8";
 
         public static string GetHashString(string s)
         {

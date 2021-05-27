@@ -95,5 +95,10 @@ namespace PresentationLayer.Controllers
         {
             return await chatService.UserChats(userInfo);
         }
+        [HttpPost]
+        public async Task<ChatCodeContainer> GetChatToken([FromBody] ChatInfo сhatInfo)
+        {
+            return await chatService.GetChatToken(сhatInfo);
+        }
     }
 }
