@@ -28,7 +28,7 @@ namespace BusinessLogicLayer.Services
                 throw new Exception("Email is already registered.");
             }
 
-            user.Password = AuthenticationService.GetHashString(user.Password);
+            user.Password = CryptographicService.GetHashString(user.Password);
             await this.repository.AddAsync<User>(user);
             return true;
         }
@@ -75,13 +75,13 @@ namespace BusinessLogicLayer.Services
 
         public async Task<UserInfo> LoginLikeClient(User user)
         {
-            var client = await this.repository.GetAsync<User>(true, x => x.Email == user.Email && x.Password == AuthenticationService.GetHashString(user.Password));
+            var client = await this.repository.GetAsync<User>(true, x => x.Email == user.Email && x.Password == CryptographicService.GetHashString(user.Password));
             if (client == null)
             {
                 throw new Exception("User not found");
             }
             UserInfo userInfo = new UserInfo();
-            userInfo.Token = AuthenticationService.EncryptString(client.Id + "|" + "user" + "|" + "-1");
+            userInfo.Token = CryptographicService.EncryptString(client.Id + "|" + "user" + "|" + "");
             userInfo.Role = "user";
             userInfo.InstitutionId = "-1";
             return userInfo;
@@ -99,7 +99,7 @@ namespace BusinessLogicLayer.Services
             string InstitutionId = userInfo.InstitutionId.ToString();
 
             UserInfo newUserInfo = new UserInfo();
-            newUserInfo.Token = AuthenticationService.EncryptString(clientId + "|" + role + "|" + InstitutionId);
+            newUserInfo.Token = CryptographicService.EncryptString(clientId + "|" + role + "|" + InstitutionId);
             newUserInfo.Role = role;
             newUserInfo.InstitutionId = InstitutionId;
             return newUserInfo;

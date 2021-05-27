@@ -74,6 +74,11 @@ namespace BusinessLogicLayer.Services
             return chat;
         }
 
+        public ChatCodeContainer GetChatToken(ChatInfo сhatInfo)
+        {
+            return new ChatCodeContainer();
+        }
+
         public async Task<bool> Post(Message message)
         {
             await this.repository.AddAsync<Message>(message);
