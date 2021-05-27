@@ -16,13 +16,13 @@ namespace PresentationLayer.Controllers
         [HttpPost]
         public Task<string> EncryptString([FromBody] test str)
         {
-            return Task.FromResult(AuthenticationService.EncryptString(str.Str));
+            return Task.FromResult(CryptographicService.EncryptString(str.Str));
         }
 
         [HttpPost]
         public Task<string> DecryptString([FromBody] test str)
         {
-            return Task.FromResult(AuthenticationService.DecryptString(str.Str));
+            return Task.FromResult(CryptographicService.DecryptString(str.Str));
         }
 
         [HttpGet]

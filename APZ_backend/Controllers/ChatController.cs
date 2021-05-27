@@ -3,6 +3,7 @@ using BusinessLogicLayer.Models;
 using BusinessLogicLayer.Services;
 using DataAccessLayer.Models.Entities;
 using DataAccessLayer.Models.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using PresentationLayer.Hubs;
@@ -67,7 +68,10 @@ namespace PresentationLayer.Controllers
         [HttpPost]
         public async Task<bool> Add([FromBody] Chat chat)
         {
-            return await chatService.Add(chat);
+            if (await chatService.Add(chat)!=null)
+                return true;
+            else
+                return false;
         }
 
         [HttpPut]
@@ -88,17 +92,40 @@ namespace PresentationLayer.Controllers
             string institutionId = AuthenticationService.GetInstitutionId(tokenContainer.Token).ToString();
             string userId = AuthenticationService.GetUserId(tokenContainer.Token).ToString();
 
-            return chatService.CreateChatCode(userId,institutionId);
+            return chatService.CreateChatCode(userId, institutionId);
         }
+
         [HttpPost]
         public async Task<IEnumerable<ChatWithLastDate>> UserChats(UserInfo userInfo)
         {
             return await chatService.UserChats(userInfo);
         }
+
         [HttpPost]
-        public async Task<ChatCodeContainer> GetChatToken([FromBody] ChatInfo сhatInfo)
+        public async Task<ChatTokenContainer> GetChatToken([FromBody] ChatInfo сhatInfo)
         {
             return await chatService.GetChatToken(сhatInfo);
+        }
+
+        [HttpPost]
+        public async Task<ChatTokenContainer> GetChatTokenByChatCode([FromBody] ChatCodeContainer chatCodeContainer)
+        {
+            string token = this.TokenFromHeader(Request);
+            int initiatorId = AuthenticationService.GetUserId(token);
+
+            return await chatService.GetChatToken(chatCodeContainer, initiatorId);
+        }
+
+        public string TokenFromHeader(HttpRequest request)
+        {
+            var re = Request;
+            var headers = re.Headers;
+            string token = "";
+            if (headers.ContainsKey("token"))
+            {
+                token = headers["token"];
+            }
+            return token;
         }
     }
 }
