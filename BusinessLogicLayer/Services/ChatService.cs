@@ -183,27 +183,27 @@ namespace BusinessLogicLayer.Services
             return chatWithLastDates.OrderByDescending(x => x.DateTime).ToArray();
         }
 
-        public static int GetChatIdFromToken(string token)
+        public int GetChatIdFromToken(string token)
         {
             return Convert.ToInt32(CryptographicService.DecryptString(token).Split("|")[0]);
         }
 
-        public static int GetInitiatorIdFromToken(string token)
+        public int GetInitiatorIdFromToken(string token)
         {
             return Convert.ToInt32(CryptographicService.DecryptString(token).Split("|")[1]);
         }
 
-        public static int GetRecipientIdFromToken(string token)
+        public int GetRecipientIdFromToken(string token)
         {
             return Convert.ToInt32(CryptographicService.DecryptString(token).Split("|")[2]);
         }
 
-        public static int GetInstitutionIdFromToken(string token)
+        public int GetInstitutionIdFromToken(string token)
         {
             return Convert.ToInt32(CryptographicService.DecryptString(token).Split("|")[3]);
         }
 
-        public static int GetInstitutionIdFromCode(string chatCode)
+        public int GetInstitutionIdFromCode(string chatCode)
         {
             string InstitutionIdWithZeros = chatCode.Split(".")[0];
             string InstitutionIdWithoutZeros = "";
@@ -217,7 +217,7 @@ namespace BusinessLogicLayer.Services
             return Convert.ToInt32(InstitutionIdWithoutZeros);
         }
 
-        public static int GetRecipientIdFromCode(string chatCode)
+        public int GetRecipientIdFromCode(string chatCode)
         {
             string RecipientIdWithZeros = chatCode.Split(".")[1];
             string IRecipientIdWithoutZeros = "";

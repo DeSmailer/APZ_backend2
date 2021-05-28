@@ -20,5 +20,12 @@ namespace BusinessLogicLayer.Interfaces
         public Task<ChatTokenContainer> GetChatToken(ChatInfo сhatInfo);
         public Task<IEnumerable<ChatWithLastDate>> UserChats(UserInfo userInfo);
         public Task<ChatTokenContainer> GetChatToken(ChatCodeContainer chatCodeContainer, int initiatorId);
+        public int GetChatIdFromToken(string token);
+        public int GetInitiatorIdFromToken(string token);
+        public int GetRecipientIdFromToken(string token);
+        public int GetInstitutionIdFromToken(string token);
+        public int GetInstitutionIdFromCode(string chatCode);
+        public int GetRecipientIdFromCode(string chatCode);
+
     }
 }

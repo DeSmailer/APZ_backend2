@@ -31,17 +31,21 @@ namespace PresentationLayer.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Message message)
+        public async Task<IActionResult> Post([FromBody] ChatMessage message)
         {
-            message.Time = DateTime.Now;
+            Message dbMessage = new Message();
+            dbMessage.ChatId = chatService.GetChatIdFromToken(message.ChatToken);
 
-            await chatService.Post(message);
+            string token = this.TokenFromHeader(Request);
+            int initiatorId = AuthenticationService.GetUserId(token);
 
-            await chatHub.Clients.All.ReceiveMessage(new ChatMessage
-            {
-                User = message.SenderId.ToString(),
-                Message = message.Text
-            });
+            dbMessage.SenderId = initiatorId;
+            dbMessage.Text = message.Message;
+            dbMessage.Time = DateTime.Now;
+
+            await chatService.Post(dbMessage);
+
+            await chatHub.Clients.All.ReceiveMessage(message);
 
             return Ok();
         }
@@ -68,7 +72,7 @@ namespace PresentationLayer.Controllers
         [HttpPost]
         public async Task<bool> Add([FromBody] Chat chat)
         {
-            if (await chatService.Add(chat)!=null)
+            if (await chatService.Add(chat) != null)
                 return true;
             else
                 return false;
