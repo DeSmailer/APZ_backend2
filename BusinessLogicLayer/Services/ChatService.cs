@@ -230,5 +230,11 @@ namespace BusinessLogicLayer.Services
             }
             return Convert.ToInt32(IRecipientIdWithoutZeros);
         }
+
+        public string GetUserName(int userId)
+        {
+            UserService userService = new UserService(repository);
+            return userService.GetUserName(userId);
+        }
     }
 }

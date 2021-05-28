@@ -16,5 +16,6 @@ namespace BusinessLogicLayer.Interfaces
         public Task<bool> Delete(User user);
         public Task<UserInfo> LoginLikeClient(User user);
         public Task<UserInfo> LoginLikeEmployee(UserInfo userInfo);
+        public string GetUserName(int userId);
     }
 }

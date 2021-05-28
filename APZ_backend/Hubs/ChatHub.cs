@@ -17,5 +17,14 @@ namespace PresentationLayer.Hubs
             return Groups.AddToGroupAsync(Context.ConnectionId, groupName);
 
         }
+        public async Task OnDisconnectedAsync(string groupName)
+        {
+            if (groupName == null)
+            {
+                groupName = "meow";
+            }
+
+            await Groups.RemoveFromGroupAsync(Context.ConnectionId, groupName);
+        }
     }
 }

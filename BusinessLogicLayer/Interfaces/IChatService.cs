@@ -26,6 +26,6 @@ namespace BusinessLogicLayer.Interfaces
         public int GetInstitutionIdFromToken(string token);
         public int GetInstitutionIdFromCode(string chatCode);
         public int GetRecipientIdFromCode(string chatCode);
-
+        public string GetUserName(int userId);
     }
 }

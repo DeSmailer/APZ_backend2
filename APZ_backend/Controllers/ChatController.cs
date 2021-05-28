@@ -39,7 +39,9 @@ namespace PresentationLayer.Controllers
 
             string token = this.TokenFromHeader(Request);
             int initiatorId = AuthenticationService.GetUserId(token);
+            int userId = AuthenticationService.GetUserId(token);
 
+            message.UserName = chatService.GetUserName(userId);
             dbMessage.SenderId = initiatorId;
             dbMessage.Text = message.Message;
             dbMessage.Time = DateTime.Now;

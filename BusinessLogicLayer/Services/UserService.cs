@@ -36,7 +36,8 @@ namespace BusinessLogicLayer.Services
         public async Task<bool> Delete(User user)
         {
             var currentUser = await this.repository.GetAsync<User>(true, x => x.Id == user.Id);
-            if (currentUser == null) { 
+            if (currentUser == null)
+            {
                 throw new Exception("User not found.");
             }
             await this.repository.DeleteAsync<User>(currentUser);
@@ -103,6 +104,16 @@ namespace BusinessLogicLayer.Services
             newUserInfo.Role = role;
             newUserInfo.InstitutionId = InstitutionId;
             return newUserInfo;
+        }
+
+        public string GetUserName(int userId)
+        {
+            var user = this.repository.Get<User>(true, x => x.Id == userId);
+            if (user == null)
+            {
+                throw new Exception("User not found");
+            }
+            return user.Name + " " + user.Surname;
         }
     }
 }
