@@ -45,6 +45,7 @@ namespace PresentationLayer.Controllers
             dbMessage.SenderId = initiatorId;
             dbMessage.Text = message.Message;
             dbMessage.Time = DateTime.Now;
+            message.Time = dbMessage.Time.ToString();
 
             await chatService.Post(dbMessage);
 
