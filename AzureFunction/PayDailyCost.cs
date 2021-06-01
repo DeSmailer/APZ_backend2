@@ -23,7 +23,6 @@ namespace AzureFunction
         {
             IWalletService walletService = new WalletService(repository);
             walletService.PayDailyCost();
-            log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
         }
     }
 }
