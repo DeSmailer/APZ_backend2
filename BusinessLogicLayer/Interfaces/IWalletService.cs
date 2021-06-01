@@ -15,5 +15,6 @@ namespace BusinessLogicLayer.Interfaces
         public Task<bool> Update(Wallet wallet);
         public Task<bool> Delete(Wallet wallet);
         public Task<bool> ChangeBalance(int institutionId, float amount);
+        public Task<bool> PayDailyCost();
     }
 }

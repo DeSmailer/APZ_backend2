@@ -58,5 +58,11 @@ namespace PresentationLayer.Controllers
             int institutionId = AuthenticationService.GetInstitutionId(institytionAmount.Token);
             return await walletService.ChangeBalance(institutionId, institytionAmount.Amount);
         }
+
+        [HttpPost]
+        public async Task<bool> PayDailyCost()
+        {
+            return await walletService.PayDailyCost();
+        }
     }
 }

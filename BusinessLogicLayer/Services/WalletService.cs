@@ -79,6 +79,17 @@ namespace BusinessLogicLayer.Services
             return wallet;
         }
 
+        public async Task<bool> PayDailyCost()
+        {
+            var institutions = await this.repository.GetRangeAsync<Institution>(true, x => true);
+
+            foreach(Institution institution in institutions)
+            {
+                await ChangeBalance(institution.Id, 0.5f);
+            }
+            return true;
+        }
+
         public async Task<bool> Update(Wallet wallet)
         {
             var currentWallet = await this.repository.GetAsync<Wallet>(true, x => x.Id == wallet.Id);
