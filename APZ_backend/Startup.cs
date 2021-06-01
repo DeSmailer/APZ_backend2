@@ -19,7 +19,6 @@ using PresentationLayer.Controllers;
 using BusinessLogicLayer.Services;
 using BusinessLogicLayer.Interfaces;
 using PresentationLayer.Hubs;
-using AzureFunction;
 
 namespace APZ_backend
 {
