@@ -19,6 +19,7 @@ using PresentationLayer.Controllers;
 using BusinessLogicLayer.Services;
 using BusinessLogicLayer.Interfaces;
 using PresentationLayer.Hubs;
+using AzureFunction;
 
 namespace APZ_backend
 {
@@ -102,7 +103,6 @@ namespace APZ_backend
             services.AddScoped<IWalletService, WalletService>();
             services.AddScoped<IExportImportService, ExportImportService>();
             services.AddScoped<IExportImportService, ExportImportService>(); 
-            services.AddScoped<AzureFunction.IPayDailyCost, AzureFunction.PayDailyCost>(); 
         }
     }
 }
