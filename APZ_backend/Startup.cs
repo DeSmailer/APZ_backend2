@@ -39,7 +39,7 @@ namespace APZ_backend
             InstallBussinessLogic(services);
             this.InstallDataAccess(services);
             InstallServices(services);
-            services.AddSignalR();
+            services.AddSignalR(); 
             services.BuildServiceProvider().GetService<AppDbContext>().Database.Migrate();
 
             services.AddCors(options =>
