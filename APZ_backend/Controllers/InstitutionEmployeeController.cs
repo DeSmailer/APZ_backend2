@@ -58,6 +58,12 @@ namespace PresentationLayer.Controllers
         [HttpPost]
         public async Task<bool> Dismiss([FromBody] InstitutionEmployee institutionEmployee)
         {
+            string token = this.TokenFromHeader(Request);
+            int userId = AuthenticationService.GetUserId(token);
+            if(institutionEmployee.UserId== userId)
+            {
+                return false;
+            }
             return await institutionEmployeeService.Dismiss(institutionEmployee);
         }
 
