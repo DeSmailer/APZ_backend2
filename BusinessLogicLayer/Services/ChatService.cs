@@ -58,10 +58,21 @@ namespace BusinessLogicLayer.Services
             return chats.ToArray();
         }
 
-        public async Task<IEnumerable<Message>> GetAllMessages(int chatId)
+        public async Task<IEnumerable<OldChatMessage>> GetAllMessages(int chatId)
         {
-            var messages = await this.repository.GetRangeAsync<Message>(true, x => x.ChatId == chatId);
-            return messages.ToArray();
+            var messages = this.repository.GetRangeAsync<Message>(true, x => x.ChatId == chatId).Result.TakeLast(20);
+            List<OldChatMessage> oldChatMessages = new List<OldChatMessage>();
+            foreach (Message message in messages)
+            {
+                string userName = GetUserName(message.SenderId);
+                oldChatMessages.Add(new OldChatMessage
+                {
+                    UserName = userName,
+                    Message = message.Text,
+                    Time = message.Time.ToString(),
+                });
+            }
+            return oldChatMessages.ToArray();
         }
 
         public async Task<Chat> GetById(int id)

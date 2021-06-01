@@ -61,9 +61,10 @@ namespace PresentationLayer.Controllers
             return await chatService.Get();
         }
 
-        [HttpGet("{chatId}")]
-        public async Task<IEnumerable<Message>> GetAllMessages(int chatId)
+        [HttpPost]
+        public async Task<IEnumerable<OldChatMessage>> GetAllMessages([FromBody] TokenContainer tokenContainer)
         {
+            int chatId = chatService.GetChatIdFromToken(tokenContainer.Token);
             return await chatService.GetAllMessages(chatId);
         }
 
@@ -76,7 +77,7 @@ namespace PresentationLayer.Controllers
         [HttpPost]
         public async Task<bool> Add([FromBody] Chat chat)
         {
-            if (await chatService.Add(chat)!=null)
+            if (await chatService.Add(chat) != null)
                 return true;
             else
                 return false;

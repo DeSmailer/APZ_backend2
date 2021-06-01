@@ -15,7 +15,7 @@ namespace BusinessLogicLayer.Interfaces
         public Task<bool> Update(Chat chat);
         public Task<bool> Delete(Chat chat);
         public Task<bool> Post(Message message);
-        public Task<IEnumerable<Message>> GetAllMessages(int chatId);
+        public Task<IEnumerable<OldChatMessage>> GetAllMessages(int chatId);
         public ChatCodeContainer CreateChatCode(string userId, string institutionId);
         public Task<ChatTokenContainer> GetChatToken(ChatInfo сhatInfo);
         public Task<IEnumerable<ChatWithLastDate>> UserChats(UserInfo userInfo);
