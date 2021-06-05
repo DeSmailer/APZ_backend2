@@ -60,7 +60,7 @@ namespace BusinessLogicLayer.Services
 
         public async Task<IEnumerable<OldChatMessage>> GetAllMessages(int chatId)
         {
-            var messages = this.repository.GetRangeAsync<Message>(true, x => x.ChatId == chatId).Result.TakeLast(20);
+            var messages = await this.repository.GetRangeAsync<Message>(true, x => x.ChatId == chatId);
             List<OldChatMessage> oldChatMessages = new List<OldChatMessage>();
             foreach (Message message in messages)
             {
