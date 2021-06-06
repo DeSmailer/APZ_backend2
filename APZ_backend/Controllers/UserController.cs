@@ -42,7 +42,7 @@ namespace PresentationLayer.Controllers
             return await userService.Register(user);
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<bool> UpdateProfile([FromBody] User user)
         {
             string token = this.TokenFromHeader(Request);
